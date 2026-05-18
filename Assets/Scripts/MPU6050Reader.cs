@@ -3,7 +3,7 @@ using System.IO.Ports;
 
 public class MPU6050Reader : MonoBehaviour
 {
-    SerialPort serial = new SerialPort(“COM3”, 9600);
+    SerialPort serial = new SerialPort("COM5", 9600);
 
     public Transform objeto;
 
@@ -19,7 +19,7 @@ public class MPU6050Reader : MonoBehaviour
         {
             string data = serial.ReadLine();
 
-            string[] values = data.Split(‘,’);
+            string[] values = data.Split(',');
 
             if (values.Length == 3)
             {
