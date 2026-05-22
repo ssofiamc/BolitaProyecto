@@ -3,7 +3,7 @@ using System.IO.Ports;
 
 public class MPU6050Reader : MonoBehaviour
 {
-    SerialPort serial = new SerialPort("COM4", 115200);
+    SerialPort serial = new SerialPort("COM3", 115200);
 
     // Valores públicos para usar en otros scripts
     public static float x;
@@ -22,7 +22,7 @@ public class MPU6050Reader : MonoBehaviour
 
     // Configuración
     public float deadZone = 5f;
-    public float smoothSpeed = 15f;
+    public float smoothSpeed = 8f;
 
     private bool calibrated = false;
 
