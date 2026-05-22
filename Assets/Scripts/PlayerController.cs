@@ -3,19 +3,28 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody rb;
-    private playerControls controls;
-    public float speed = 10f;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        controls = new playerControls();
-        controls.Enable ();
-    }
 
-    // Update is called once per frame
-    void Update()
+    public float speed = 0.1f;
+    public float maxVelocity = 3f;
+
+    void FixedUpdate()
     {
-        Vector2 dir = controls.Player.Move.ReadValue <Vector2>();
-        rb.AddForce (dir.x * speed * Time.deltaTime, 0, dir.y * speed * Time.deltaTime);
+        // Teclado
+        float keyboardX = Input.GetAxis("Horizontal");
+        float keyboardZ = Input.GetAxis("Vertical");
+
+        // MPU6050
+        float gyroX = Mathf.Clamp(MPU6050Reader.x / 80f, -1f, 1f);
+        float gyroZ = Mathf.Clamp(MPU6050Reader.y / 80f, -1f, 1f);
+
+        // Combinar
+        float moveX = keyboardX + gyroX;
+        float moveZ = keyboardZ + gyroZ;
+
+        Vector3 movement = new Vector3(moveX, 0, moveZ);
+
+        rb.AddForce(movement * speed);
+
+        rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, maxVelocity);
     }
 }
