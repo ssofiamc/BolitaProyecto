@@ -22,7 +22,7 @@ public class MPU6050Reader : MonoBehaviour
 
     // Configuración
     public float deadZone = 5f;
-    public float smoothSpeed = 8f;
+    public float smoothSpeed = 15f;
 
     private bool calibrated = false;
 
