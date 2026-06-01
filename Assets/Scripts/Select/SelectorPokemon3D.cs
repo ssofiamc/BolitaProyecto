@@ -1,15 +1,13 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SelectorPokemon3D : MonoBehaviour
 {
     public GameObject[] pokemones;
-    public Transform puntoSpawn;
     public TextMeshProUGUI nombrePokemon;
 
     private int indiceActual = 0;
-    private GameObject pokemonActual;
 
     void Start()
     {
@@ -18,17 +16,12 @@ public class SelectorPokemon3D : MonoBehaviour
 
     void MostrarPokemon()
     {
-        if (pokemonActual != null)
-            Destroy(pokemonActual);
+        for (int i = 0; i < pokemones.Length; i++)
+        {
+            pokemones[i].SetActive(i == indiceActual);
+        }
 
-        pokemonActual = Instantiate(
-            pokemones[indiceActual],
-            puntoSpawn.position,
-            Quaternion.identity
-        );
-
-        nombrePokemon.text =
-            pokemones[indiceActual].name;
+        nombrePokemon.text = pokemones[indiceActual].name;
     }
 
     public void Siguiente()
