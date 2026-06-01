@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2589139043847683711, guid: bbd45e82ec8c8904e9e41e77fdc8eed3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.49
+      value: -0.22
       objectReference: {fileID: 0}
     - target: {fileID: 2589139043847683711, guid: bbd45e82ec8c8904e9e41e77fdc8eed3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -213,6 +213,7 @@ GameObject:
   - component: {fileID: 45988866}
   - component: {fileID: 45988865}
   - component: {fileID: 45988864}
+  - component: {fileID: 45988867}
   m_Layer: 5
   m_Name: BtnIzq
   m_TagString: Untagged
@@ -283,7 +284,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2029868872}
+      - m_Target: {fileID: 255276015}
         m_TargetAssemblyTypeName: SelectorPokemon3D, Assembly-CSharp
         m_MethodName: Anterior
         m_Mode: 1
@@ -333,6 +334,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 45988862}
   m_CullTransparentMesh: 1
+--- !u!114 &45988867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45988862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b62dc133b2ec34b93518a85d309072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SelectorPokemon3D
+  pokemones:
+  - {fileID: 6085260200586054122, guid: 0844a0eb913f42f4bb273e2eea698c54, type: 3}
+  - {fileID: 4729709155321768218, guid: bbd45e82ec8c8904e9e41e77fdc8eed3, type: 3}
+  - {fileID: 6518987003825063870, guid: 5ca631627869a004b96abf9ea99c7b16, type: 3}
+  nombrePokemon: {fileID: 0}
 --- !u!1 &141237194
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,6 +425,55 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &255276014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 255276016}
+  - component: {fileID: 255276015}
+  m_Layer: 0
+  m_Name: SelectorPokemon3D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &255276015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255276014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b62dc133b2ec34b93518a85d309072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SelectorPokemon3D
+  pokemones:
+  - {fileID: 6085260200586054122, guid: 0844a0eb913f42f4bb273e2eea698c54, type: 3}
+  - {fileID: 4729709155321768218, guid: bbd45e82ec8c8904e9e41e77fdc8eed3, type: 3}
+  - {fileID: 6518987003825063870, guid: 5ca631627869a004b96abf9ea99c7b16, type: 3}
+  nombrePokemon: {fileID: 1083093419}
+--- !u!4 &255276016
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255276014}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1565.6493, y: 0.00001, z: 400.74008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -493,11 +560,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3305037618865026914, guid: 5ca631627869a004b96abf9ea99c7b16, type: 3}
   m_PrefabInstance: {fileID: 713607981}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &715280809 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6085260200586054122, guid: 0844a0eb913f42f4bb273e2eea698c54, type: 3}
-  m_PrefabInstance: {fileID: 1716456791}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &729620821
 GameObject:
@@ -835,6 +897,7 @@ GameObject:
   - component: {fileID: 960713743}
   - component: {fileID: 960713742}
   - component: {fileID: 960713741}
+  - component: {fileID: 960713744}
   m_Layer: 5
   m_Name: BtnDer
   m_TagString: Untagged
@@ -905,7 +968,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2029868872}
+      - m_Target: {fileID: 255276015}
         m_TargetAssemblyTypeName: SelectorPokemon3D, Assembly-CSharp
         m_MethodName: Siguiente
         m_Mode: 1
@@ -955,6 +1018,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 960713739}
   m_CullTransparentMesh: 1
+--- !u!114 &960713744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960713739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b62dc133b2ec34b93518a85d309072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SelectorPokemon3D
+  pokemones:
+  - {fileID: 6085260200586054122, guid: 0844a0eb913f42f4bb273e2eea698c54, type: 3}
+  - {fileID: 4729709155321768218, guid: bbd45e82ec8c8904e9e41e77fdc8eed3, type: 3}
+  - {fileID: 6518987003825063870, guid: 5ca631627869a004b96abf9ea99c7b16, type: 3}
+  nombrePokemon: {fileID: 1083093419}
 --- !u!1 &1083093417
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,7 +1048,7 @@ GameObject:
   - component: {fileID: 1083093419}
   - component: {fileID: 1083093421}
   m_Layer: 5
-  m_Name: Jigglypuff
+  m_Name: nombrePokemon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1105,7 +1185,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b62dc133b2ec34b93518a85d309072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SelectorPokemon3D
-  pokemones: []
+  pokemones:
+  - {fileID: 6085260200586054122, guid: 0844a0eb913f42f4bb273e2eea698c54, type: 3}
+  - {fileID: 4729709155321768218, guid: bbd45e82ec8c8904e9e41e77fdc8eed3, type: 3}
+  - {fileID: 6518987003825063870, guid: 5ca631627869a004b96abf9ea99c7b16, type: 3}
   nombrePokemon: {fileID: 1083093419}
 --- !u!1 &1133499803
 GameObject:
@@ -1254,7 +1337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SelectorPokemon3D
   pokemones:
-  - {fileID: 715280809}
+  - {fileID: 6085260200012285117}
   - {fileID: 1476305788}
   - {fileID: 1377537089}
   nombrePokemon: {fileID: 1083093419}
@@ -1309,7 +1392,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1716456792}
+  - {fileID: 5406293609703993881}
   - {fileID: 19235022}
   - {fileID: 713607982}
   m_Father: {fileID: 0}
@@ -1375,60 +1458,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0844a0eb913f42f4bb273e2eea698c54, type: 3}
---- !u!4 &1716456792 stripped
+--- !u!4 &5406293609703993881 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5406293608054783822, guid: 0844a0eb913f42f4bb273e2eea698c54, type: 3}
   m_PrefabInstance: {fileID: 1716456791}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2029868871
+--- !u!1 &6085260200012285117 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6085260200586054122, guid: 0844a0eb913f42f4bb273e2eea698c54, type: 3}
+  m_PrefabInstance: {fileID: 1716456791}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2029868873}
-  - component: {fileID: 2029868872}
-  m_Layer: 0
-  m_Name: SelectorPokemon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2029868872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2029868871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6b62dc133b2ec34b93518a85d309072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SelectorPokemon3D
-  pokemones:
-  - {fileID: 6085260200586054122, guid: 0844a0eb913f42f4bb273e2eea698c54, type: 3}
-  - {fileID: 4729709155321768218, guid: bbd45e82ec8c8904e9e41e77fdc8eed3, type: 3}
-  - {fileID: 6518987003825063870, guid: 5ca631627869a004b96abf9ea99c7b16, type: 3}
-  nombrePokemon: {fileID: 1083093419}
---- !u!4 &2029868873
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2029868871}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 593.12885, y: 0.00001, z: 77.30714}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1438,4 +1477,4 @@ SceneRoots:
   - {fileID: 1674462912}
   - {fileID: 804306559}
   - {fileID: 141237197}
-  - {fileID: 2029868873}
+  - {fileID: 255276016}
