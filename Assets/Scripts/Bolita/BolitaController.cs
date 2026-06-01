@@ -178,16 +178,9 @@ public class BolitaController : MonoBehaviour
                     0.2f
                 );
 
-                // Sacar la bolita del obstáculo
                 transform.position +=
                     direccion *
                     (distancia + 0.001f);
-
-                // Deslizarse por la superficie
-                velocidad = Vector3.ProjectOnPlane(
-                    velocidad,
-                    direccion
-                );
             }
         }
     }
