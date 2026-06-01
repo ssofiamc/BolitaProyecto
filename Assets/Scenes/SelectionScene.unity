@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 72dc8050443d7e940b3c8cd95bdc7556, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -493,6 +493,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3305037618865026914, guid: 5ca631627869a004b96abf9ea99c7b16, type: 3}
   m_PrefabInstance: {fileID: 713607981}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &715280809 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6085260200586054122, guid: 0844a0eb913f42f4bb273e2eea698c54, type: 3}
+  m_PrefabInstance: {fileID: 1716456791}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &729620821
 GameObject:
@@ -961,6 +966,7 @@ GameObject:
   - component: {fileID: 1083093418}
   - component: {fileID: 1083093420}
   - component: {fileID: 1083093419}
+  - component: {fileID: 1083093421}
   m_Layer: 5
   m_Name: Jigglypuff
   m_TagString: Untagged
@@ -1087,6 +1093,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083093417}
   m_CullTransparentMesh: 1
+--- !u!114 &1083093421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083093417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b62dc133b2ec34b93518a85d309072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SelectorPokemon3D
+  pokemones: []
+  nombrePokemon: {fileID: 1083093419}
 --- !u!1 &1133499803
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,6 +1119,8 @@ GameObject:
   - component: {fileID: 1133499807}
   - component: {fileID: 1133499806}
   - component: {fileID: 1133499805}
+  - component: {fileID: 1133499808}
+  - component: {fileID: 1133499809}
   m_Layer: 5
   m_Name: Aceptar
   m_TagString: Untagged
@@ -1169,14 +1191,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2029868872}
-        m_TargetAssemblyTypeName: SelectorPokemon3D, Assembly-CSharp
-        m_MethodName: Aceptar
-        m_Mode: 1
+      - m_Target: {fileID: 1133499809}
+        m_TargetAssemblyTypeName: ButtonReset, Assembly-CSharp
+        m_MethodName: Reiniciar
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1219,6 +1241,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1133499803}
   m_CullTransparentMesh: 1
+--- !u!114 &1133499808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133499803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b62dc133b2ec34b93518a85d309072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SelectorPokemon3D
+  pokemones:
+  - {fileID: 715280809}
+  - {fileID: 1476305788}
+  - {fileID: 1377537089}
+  nombrePokemon: {fileID: 1083093419}
+--- !u!114 &1133499809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133499803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38cce8141d705914e86c50c2768afb15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonReset
+--- !u!1 &1377537089 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6518987003825063870, guid: 5ca631627869a004b96abf9ea99c7b16, type: 3}
+  m_PrefabInstance: {fileID: 713607981}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1476305788 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4729709155321768218, guid: bbd45e82ec8c8904e9e41e77fdc8eed3, type: 3}
+  m_PrefabInstance: {fileID: 19235021}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1674462911
 GameObject:
   m_ObjectHideFlags: 0
