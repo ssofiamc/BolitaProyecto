@@ -48,7 +48,8 @@ public class BolitaSimulator : MonoBehaviour
 
     private void Update()
     {
-        if (estaPausada) return;
+        if (estaPausada) 
+            return;
 
         // Acumular tiempo real escalado
         timerAcumulado += Time.deltaTime * escalaSimulacion;

@@ -28,22 +28,29 @@ public class SimulationManager: MonoBehaviour
     // ─────────────────────────────────────────────
     // SUSCRIPCIÓN AL SIMULADOR
     // ─────────────────────────────────────────────
-    private void OnEnable()
+    private void Start()
     {
-        if (BolitaSimulator.Instancia != null)
+        Debug.Log("SimulationManager Start");
+
+        if (BolitaSimulator.Instancia == null)
         {
-            BolitaSimulator.Instancia.OnPaso += Paso;
-            BolitaSimulator.Instancia.OnReset += ResetearTodo;
+            Debug.LogError("No existe BolitaSimulator en la escena.");
+            return;
         }
+
+        Debug.Log("SimulationManager Suscrito");
+
+        BolitaSimulator.Instancia.OnPaso += Paso;
+        BolitaSimulator.Instancia.OnReset += ResetearTodo;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
-        if (BolitaSimulator.Instancia != null)
-        {
-            BolitaSimulator.Instancia.OnPaso -= Paso;
-            BolitaSimulator.Instancia.OnReset -= ResetearTodo;
-        }
+        if (BolitaSimulator.Instancia == null)
+            return;
+
+        BolitaSimulator.Instancia.OnPaso -= Paso;
+        BolitaSimulator.Instancia.OnReset -= ResetearTodo;
     }
 
     // ─────────────────────────────────────────────
