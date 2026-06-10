@@ -54,8 +54,6 @@ public class BolitaInputForce : MonoBehaviour
 
         Vector3 fuerza = direccion * fuerzaMovimiento;
 
-        Debug.Log("FUERZA ENVIADA: " + fuerza);
-
         bolita.AgregarFuerza(fuerza);
     }
 }

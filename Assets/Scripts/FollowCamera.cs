@@ -38,7 +38,7 @@ public class FollowCamera : MonoBehaviour
         Vector3 posicionDeseada = new Vector3(
             objetivo.position.x + offset.x,
             alturaFija,
-            objetivo.position.z + offset.z
+            objetivo.position.z + offset.z -3f
         );
 
         if (suavizado <= 0f)

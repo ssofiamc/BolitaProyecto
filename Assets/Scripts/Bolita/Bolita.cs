@@ -162,65 +162,109 @@ public class Bolita : MonoBehaviour
 
     public void Mover(float dt)
     {
-        Vector3 desplazamiento =
-            velocidad * dt;
+        // ===================================
+        // MOVIMIENTO HORIZONTAL
+        // ===================================
 
-        float distancia =
-            desplazamiento.magnitude;
+        Vector3 movimientoHorizontal =
+            new Vector3(
+                velocidad.x,
+                0f,
+                velocidad.z
+            ) * dt;
 
-        if (distancia <= Mathf.Epsilon)
-            return;
+        float distanciaHorizontal =
+            movimientoHorizontal.magnitude;
 
-        Vector3 direccion =
-            desplazamiento.normalized;
-
-        Vector3 origenCast =
-            posicion - direccion * skin;
-
-        float distanciaCast =
-            distancia + skin;
-
-        if (
-            Physics.SphereCast(
-                origenCast,
-                radio,
-                direccion,
-                out RaycastHit golpe,
-                distanciaCast,
-                mascaraColision,
-                QueryTriggerInteraction.Ignore
-            )
-        )
+        if (distanciaHorizontal > Mathf.Epsilon)
         {
-            float recorrido =
-                Mathf.Max(
-                    0f,
-                    golpe.distance - skin
-                );
+            Vector3 direccionHorizontal =
+                movimientoHorizontal.normalized;
 
-            posicion +=
-                direccion * recorrido;
-
-            // Piso
-            if (golpe.normal.y > 0.7f)
+            if (
+                Physics.SphereCast(
+                    posicion,
+                    radio,
+                    direccionHorizontal,
+                    out RaycastHit golpeHorizontal,
+                    distanciaHorizontal + skin,
+                    mascaraColision,
+                    QueryTriggerInteraction.Ignore
+                )
+            )
             {
-                if (velocidad.y < 0f)
+                // Ignorar suelo
+                if (golpeHorizontal.normal.y < 0.7f)
                 {
-                    velocidad.y =
-                        -velocidad.y *
-                        restitucion;
+                    float recorrido =
+                        Mathf.Max(
+                            0f,
+                            golpeHorizontal.distance - skin
+                        );
+
+                    posicion +=
+                        direccionHorizontal * recorrido;
+
+                    ReflejarVelocidad(
+                        golpeHorizontal.normal
+                    );
+                }
+                else
+                {
+                    posicion += movimientoHorizontal;
                 }
             }
             else
             {
-                ReflejarVelocidad(
-                    golpe.normal
-                );
+                posicion += movimientoHorizontal;
             }
         }
-        else
+
+        // ===================================
+        // MOVIMIENTO VERTICAL
+        // ===================================
+
+        float movimientoY =
+            velocidad.y * dt;
+
+        if (Mathf.Abs(movimientoY) > Mathf.Epsilon)
         {
-            posicion += desplazamiento;
+            Vector3 direccionVertical =
+                movimientoY > 0f
+                ? Vector3.up
+                : Vector3.down;
+
+            if (
+                Physics.SphereCast(
+                    posicion,
+                    radio,
+                    direccionVertical,
+                    out RaycastHit golpeVertical,
+                    Mathf.Abs(movimientoY) + skin,
+                    mascaraColision,
+                    QueryTriggerInteraction.Ignore
+                )
+            )
+            {
+                float recorrido =
+                    Mathf.Max(
+                        0f,
+                        golpeVertical.distance - skin
+                    );
+
+                posicion +=
+                    direccionVertical * recorrido;
+
+                // Rebote vertical
+                velocidad.y =
+                    -velocidad.y *
+                    restitucion;
+            }
+            else
+            {
+                posicion +=
+                    Vector3.up * movimientoY;
+            }
         }
     }
 
