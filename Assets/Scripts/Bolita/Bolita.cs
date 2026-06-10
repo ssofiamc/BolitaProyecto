@@ -142,8 +142,13 @@ public class Bolita : MonoBehaviour
         // Fricción de rodadura
         if (enSuelo)
         {
-            velocidad.x *= 0.99f;
-            velocidad.z *= 0.99f;
+            float factorRodadura =
+        Mathf.Clamp01(
+            1f - friccionActual * dt * 10f
+        );
+
+            velocidad.x *= factorRodadura;
+            velocidad.z *= factorRodadura;
         }
 
         if (velocidad.magnitude > velocidadMaxima)
