@@ -2130,9 +2130,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcc395411c6632245ba7868ec9ad0860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MagneticSimulation
-  constanteK: 1500
+  constanteK: 100
   distanciaMinima: 0.5
-  radioAccion: 20
+  radioAccion: 15
   esRepulsivo: 0
 --- !u!114 &1472779669
 MonoBehaviour:
@@ -2243,6 +2243,73 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6085260200586054122, guid: 0844a0eb913f42f4bb273e2eea698c54, type: 3}
   m_PrefabInstance: {fileID: 6420984582279920505}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1695612852
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1695612855}
+  - component: {fileID: 1695612854}
+  - component: {fileID: 1695612853}
+  m_Layer: 0
+  m_Name: Viento
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1695612853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695612852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d4bf1dea169a4840a601a8cccf3ca5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WindSimulation
+  direccionViento: {x: 1, y: 0, z: 0}
+  intensidadBase: 40
+  esOscilante: 0
+  amplitudOscilacion: 20
+  frecuenciaHz: 0.5
+  radioAccion: 12
+  mostrarGizmos: 1
+--- !u!114 &1695612854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695612852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fcb690e8bb6ff540b916162c05ba8e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimulationZone
+  nombreSimulacion: Viento
+  objetosAlEntrar: []
+  objetosAlSalir: []
+--- !u!4 &1695612855
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695612852}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 127.4, y: 0.20073, z: -2.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1758182557
 GameObject:
   m_ObjectHideFlags: 0
@@ -2949,5 +3016,6 @@ SceneRoots:
   - {fileID: 550919520}
   - {fileID: 924182589}
   - {fileID: 1472779670}
+  - {fileID: 1695612855}
   - {fileID: 955480041}
   - {fileID: 1916918690}
