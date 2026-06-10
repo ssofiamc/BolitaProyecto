@@ -16,11 +16,11 @@ public class Bolita : MonoBehaviour
 
     [Tooltip("Drag lineal.")]
     [Min(0f)]
-    public float drag = 0.5f;
+    public float drag = 1f;
 
     [Tooltip("Restitución de colisiones.")]
     [Range(0f, 1f)]
-    public float restitucion = 0.4f;
+    public float restitucion = 0.25f;
 
     [Tooltip("Fricción base.")]
     [Range(0f, 1f)]
@@ -139,6 +139,13 @@ public class Bolita : MonoBehaviour
 
         velocidad += aceleracion * dt;
 
+        // Fricción de rodadura
+        if (enSuelo)
+        {
+            velocidad.x *= 0.99f;
+            velocidad.z *= 0.99f;
+        }
+
         if (velocidad.magnitude > velocidadMaxima)
         {
             velocidad =
@@ -199,7 +206,9 @@ public class Bolita : MonoBehaviour
             {
                 if (velocidad.y < 0f)
                 {
-                    velocidad.y = 0f;
+                    velocidad.y =
+                        -velocidad.y *
+                        restitucion;
                 }
             }
             else

@@ -5,7 +5,7 @@ public class BolitaInputForce : MonoBehaviour
 {
     [Header("Control del Jugador")]
     [Tooltip("Magnitud de la fuerza aplicada al presionar WASD.")]
-    public float fuerzaMovimiento = 25f;
+    public float fuerzaMovimiento = 50f;
 
     [Tooltip("Permite movimiento diagonal normalizado.")]
     public bool normalizarDiagonal = true;

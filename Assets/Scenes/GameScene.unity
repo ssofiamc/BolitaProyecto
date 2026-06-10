@@ -10239,8 +10239,8 @@ MonoBehaviour:
   velocidadInicial: {x: 0, y: 0, z: 0}
   gravedad: {x: 0, y: -9.81, z: 0}
   masaFactor: 1
-  drag: 0.5
-  restitucion: 0.4
+  drag: 1
+  restitucion: 0.25
   friccionBase: 0.3
   mascaraColision:
     serializedVersion: 2

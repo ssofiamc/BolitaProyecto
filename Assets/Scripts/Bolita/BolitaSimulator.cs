@@ -7,7 +7,7 @@ public class BolitaSimulator : MonoBehaviour
 
     [Header("Configuración de Simulación")]
     [Tooltip("Tamaño del paso de tiempo fijo Δt (segundos). 0.02 = 50Hz.")]
-    [Min(0.0001f)] public float updateTime = 0.02f;
+    [Min(0.0001f)] public float updateTime = 0.01f;
 
     [Tooltip("Escala de tiempo de simulación (1 = tiempo real, 0.5 = cámara lenta).")]
     [Range(0f, 5f)] public float escalaSimulacion = 1f;
