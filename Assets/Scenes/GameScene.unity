@@ -267,6 +267,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ac3afc93100187b46a09ffaed73b5a64, type: 3}
   m_PrefabInstance: {fileID: 95397138}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &183071561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 183071564}
+  - component: {fileID: 183071563}
+  - component: {fileID: 183071562}
+  m_Layer: 0
+  m_Name: Salto
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &183071562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183071561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59db15585ea9f1b48bb8178c08dc5503, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JumpSimulation
+  impulsoVertical: 60
+  tiempoRecarga: 0.5
+--- !u!114 &183071563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183071561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fcb690e8bb6ff540b916162c05ba8e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimulationZone
+  nombreSimulacion: Magnetismo
+  objetosAlEntrar: []
+  objetosAlSalir: []
+--- !u!4 &183071564
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183071561}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 142.17778, y: 0.20073, z: 29.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &201857534
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -539,7 +601,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9218375391164296070, guid: 40b193626af18444db2b4d9dc797adfa, type: 3}
       propertyPath: m_Name
-      value: LaberintoTest (1)
+      value: PruebaObby
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -3017,5 +3079,6 @@ SceneRoots:
   - {fileID: 924182589}
   - {fileID: 1472779670}
   - {fileID: 1695612855}
+  - {fileID: 183071564}
   - {fileID: 955480041}
   - {fileID: 1916918690}
