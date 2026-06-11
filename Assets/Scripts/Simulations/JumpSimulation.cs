@@ -40,10 +40,6 @@ public class JumpSimulation : MonoBehaviour
             bolita.AgregarImpulso(
                 impulso
             );
-
-            Debug.Log(
-                "[SALTO] Impulso aplicado"
-            );
         }
     }
 

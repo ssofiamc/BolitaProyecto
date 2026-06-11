@@ -38,10 +38,6 @@ public class BoostSimulation : MonoBehaviour
             bolita.AgregarImpulso(
                 impulso
             );
-
-            Debug.Log(
-                "[BOOST] Impulso aplicado"
-            );
         }
     }
 
