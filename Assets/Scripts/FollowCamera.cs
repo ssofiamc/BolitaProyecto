@@ -4,46 +4,46 @@ public class FollowCamera : MonoBehaviour
 {
     [Header("Objetivo")]
     [Tooltip("Asignar el GameObject de la bolita aquí.")]
-    public Transform objetivo; // La cámara seguirá a este transform (la bolita).
+    public Transform objetivo;
 
     [Header("Configuración")]
-    [Tooltip("Altura fija de la cámara en el eje Y del mundo.")]
-    public float alturaFija = 12f; // Altura constante sobre el suelo
+    [Tooltip("Altura adicional sobre el objetivo.")]
+    public float alturaFija = 12f;
 
     [Tooltip("Tiempo de suavizado. Más bajo = más rápida. 0 = inmediata.")]
     [Range(0f, 0.5f)]
-    public float suavizado = 0.08f; // Tiempo para alcanzar la posición deseada (en segundos).
+    public float suavizado = 0.08f;
 
     [Tooltip("Offset lateral/frontal de la cámara respecto a la bolita.")]
-    public Vector3 offset = Vector3.zero; // Desplazamiento adicional desde la posición de la bolita (en XZ).
+    public Vector3 offset = Vector3.zero;
 
-    private Vector3 velocidadActual = Vector3.zero; // Variable interna para SmoothDamp (no se asigna manualmente).
+    private Vector3 velocidadActual = Vector3.zero;
 
-    private void LateUpdate() // Se llama después de que todos los objetos hayan actualizado su posición
+    private void LateUpdate()
     {
-        if (objetivo == null) // Verificar que se haya asignado un objetivo
+        if (objetivo == null)
         {
-            Debug.LogWarning("[FollowCamera] No hay objetivo asignado."); // Evitar errores si no se asigna la bolita
+            Debug.LogWarning("[FollowCamera] No hay objetivo asignado.");
             return;
         }
 
-        Vector3 posicionDeseada = new Vector3( // Calcular la posición deseada de la cámara
-            objetivo.position.x + offset.x, // Mantener la misma posición X que la bolita + offset
-            alturaFija, // Altura fija en Y
-            objetivo.position.z + offset.z - 5f // Mantener la misma posición Z que la bolita + offset (con un pequeño retroceso para mejor vista)
+        Vector3 posicionDeseada = new Vector3(
+            objetivo.position.x + offset.x,
+            objetivo.position.y + alturaFija,
+            objetivo.position.z + offset.z - 5f
         );
 
-        if (suavizado <= 0f) // Si el suavizado es 0 o negativo, mover la cámara directamente sin suavizado
+        if (suavizado <= 0f)
         {
-            transform.position = posicionDeseada; // Mover la cámara directamente a la posición deseada
+            transform.position = posicionDeseada;
         }
         else
         {
-            transform.position = Vector3.SmoothDamp( // Suavizar el movimiento de la cámara hacia la posición deseada
-                transform.position, // Posición actual de la cámara
-                posicionDeseada, // Posición objetivo a alcanzar
-                ref velocidadActual, // Variable de velocidad que SmoothDamp actualiza internamente (se pasa por referencia)
-                suavizado // Tiempo de suavizado para alcanzar la posición deseada (en segundos)
+            transform.position = Vector3.SmoothDamp(
+                transform.position,
+                posicionDeseada,
+                ref velocidadActual,
+                suavizado
             );
         }
     }

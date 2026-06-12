@@ -4,7 +4,7 @@ public class BoostSimulation : MonoBehaviour
 {
     [Header("Impulso")]
     public Vector3 direccionImpulso = Vector3.forward;
-    public float fuerzaImpulso = 120f;
+    public float fuerzaImpulso = 10000f;
     public float tiempoRecarga = 0.5f;
     private float ultimoBoost = -999f;
 
@@ -18,20 +18,20 @@ public class BoostSimulation : MonoBehaviour
                     transform.position
                 ); // Calcula la distancia entre la bolita y el centro del boost
 
-            if (distancia > 1.5f) // Si la bolita está a más de 1.5 unidades de distancia, no se le aplica el impulso
+            if (distancia > 1.5f) // Si la bolita estï¿½ a mï¿½s de 1.5 unidades de distancia, no se le aplica el impulso
                 continue;
 
             if (Time.time <
                 ultimoBoost + tiempoRecarga)
-                continue; // Si no ha pasado el tiempo de recarga desde el último boost, no se le aplica el impulso
+                continue; // Si no ha pasado el tiempo de recarga desde el ï¿½ltimo boost, no se le aplica el impulso
 
-            ultimoBoost = Time.time; // Actualiza el tiempo del último boost al tiempo actual
+            ultimoBoost = Time.time; // Actualiza el tiempo del ï¿½ltimo boost al tiempo actual
 
             Vector3 impulso =
                 direccionImpulso.normalized *
-                fuerzaImpulso; // Calcula el vector de impulso normalizando la dirección y multiplicándola por la fuerza
+                fuerzaImpulso; // Calcula el vector de impulso normalizando la direcciï¿½n y multiplicï¿½ndola por la fuerza
 
-            bolita.AgregarImpulso(impulso); // Aplica el impulso a la bolita utilizando su método AgregarImpulso
+            bolita.AgregarImpulso(impulso); // Aplica el impulso a la bolita utilizando su mï¿½todo AgregarImpulso
         }
     }
 
