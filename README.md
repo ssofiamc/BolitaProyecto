@@ -89,14 +89,11 @@ También es posible utilizar las teclas de dirección.
 
 ## Autores
 
-* Nombre Integrante 1
-* Nombre Integrante 2
-* Nombre Integrante 3
+* Sara Sofia Moreno Castro
+* Angy Juliana Farasica Eljaiek
 
 ---
 
 ## Información Académica
 
-Proyecto desarrollado para la asignatura de Simulación y Entornos Interactivos.
-
-El objetivo del proyecto es integrar múltiples simulaciones físicas dentro de un entorno navegable, aplicando conceptos matemáticos, físicos y de programación en tiempo real.
+Proyecto desarrollado para la asignatura Entornos y Simulación / Electiva de Profundización 1
