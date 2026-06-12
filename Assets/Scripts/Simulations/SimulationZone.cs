@@ -2,40 +2,29 @@
 
 public class SimulationZone : MonoBehaviour
 {
-    [Header("Nombre de la Simulación")]
-    [Tooltip("Texto que aparecerá en el HUD cuando la bolita entre a esta zona.")]
+    [Header("Información")]
     public string nombreSimulacion = "Magnetismo";
 
-    [Header("Objetos a Activar al Entrar")]
-    [Tooltip("Objetos que se activan cuando la bolita entra (efectos, luces, etc.).")]
-    public GameObject[] objetosAlEntrar;
+    [Header("Radio de detección")]
+    public float radioAccion = 10f;
 
-    [Header("Objetos a Desactivar al Entrar")]
-    public GameObject[] objetosAlSalir;
-
-    // ─────────────────────────────────────────────
-    // DETECCIÓN
-    // ─────────────────────────────────────────────
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        if (!other.TryGetComponent<Bolita>(out _)) return;
+        foreach (Bolita bolita in SimulationManager.Todas)
+        {
+            float distancia =
+                Vector3.Distance(
+                    transform.position,
+                    bolita.Posicion
+                );
 
-        BolitaHUD.zonaActual = nombreSimulacion;
-        Debug.Log($"[Zona] Bolita entró a: {nombreSimulacion}");
+            if (distancia <= radioAccion)
+            {
+                BolitaHUD.zonaActual =
+                    nombreSimulacion;
 
-        foreach (var obj in objetosAlEntrar)
-            if (obj != null) obj.SetActive(true);
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (!other.TryGetComponent<Bolita>(out _)) return;
-
-        // Restaurar a zona general
-        if (BolitaHUD.zonaActual == nombreSimulacion)
-            BolitaHUD.zonaActual = "Tránsito";
-
-        foreach (var obj in objetosAlSalir)
-            if (obj != null) obj.SetActive(false);
+                return;
+            }
+        }
     }
 }

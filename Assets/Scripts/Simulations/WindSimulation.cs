@@ -13,10 +13,10 @@ public class WindSimulation :
 
     public bool esOscilante = false;
 
-    public float amplitudOscilacion = 20f;
+    public float amplitudOscilacion = 40f;
 
     [Min(0.01f)]
-    public float frecuenciaHz = 0.5f;
+    public float frecuenciaHz = 3f;
 
     [Header("Área de acción")]
     public float radioAccion = 12f;
