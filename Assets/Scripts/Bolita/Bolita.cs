@@ -35,10 +35,6 @@ public class Bolita : MonoBehaviour
     [Header("Velocidad Máxima")]
     public float velocidadMaxima = 20f;
 
-    // =========================
-    // Estado físico interno
-    // =========================
-
     private Vector3 posicion;
     private Vector3 velocidad;
     private Vector3 fuerzaAcumulada;
@@ -51,23 +47,19 @@ public class Bolita : MonoBehaviour
 
     private bool enSuelo;
 
-    // =========================
-    // Propiedades públicas
-    // =========================
-
     public float Masa => masa;
 
     public float Radio => radio;
 
     public float Restitucion => restitucion;
 
-    public Vector3 Velocidad
+    public Vector3 Velocidad // Propiedad para acceder a la velocidad actual
     {
         get => velocidad;
         set => velocidad = value;
-    }
+    } // Propiedad para acceder a la velocidad actual, permitiendo leer y modificar la velocidad desde otros componentes si es necesario.
 
-    public Vector3 Posicion
+    public Vector3 Posicion // Propiedad para acceder a la posición actual, actualizando la posición del transform cuando se asigna un nuevo valor
     {
         get => posicion;
         set
@@ -75,13 +67,9 @@ public class Bolita : MonoBehaviour
             posicion = value;
             transform.position = value;
         }
-    }
+    } // Propiedad para acceder a la posición actual, permitiendo leer y modificar la posición desde otros componentes si es necesario, y asegurando que el transform se actualice automáticamente cuando se asigna una nueva posición.
 
-    // =========================
-    // Inicialización
-    // =========================
-
-    private void Awake()
+    private void Awake() // Inicialización de parámetros físicos y condiciones iniciales
     {
         posicionInicial = transform.position;
 
@@ -89,25 +77,21 @@ public class Bolita : MonoBehaviour
         CalcularMasa();
 
         friccionActual = friccionBase;
-    }
+    } // Inicialización de parámetros físicos y condiciones iniciales, donde se guarda la posición inicial del transform para poder resetearla posteriormente, se calcula el radio y la masa basándose en el collider y el factor de masa, y se establece la fricción actual al valor base definido en el inspector.
 
-    private void Start()
+    private void Start() // Registrar esta bolita en el SimulationManager para que sea incluida en la simulación y pueda recibir actualizaciones de posición, velocidad y fuerzas aplicadas por los generadores de fuerza registrados en el simulador.
     {
         Resetear();
 
         SimulationManager.Registrar(this);
     }
 
-    private void OnDisable()
+    private void OnDisable() // Desregistrar esta bolita del SimulationManager para que deje de ser incluida en la simulación y no reciba actualizaciones de posición, velocidad y fuerzas aplicadas por los generadores de fuerza registrados en el simulador cuando este objeto ya no esté activo o haya sido destruido.
     {
         SimulationManager.Desregistrar(this);
     }
 
-    // =========================
-    // Detección de suelo
-    // =========================
-
-    private void DetectarSuelo()
+    private void DetectarSuelo() // Detectar si la bolita está en contacto con el suelo utilizando un raycast hacia abajo desde la posición actual, con una distancia igual al radio de la bolita más un pequeño margen (skin) para evitar problemas de detección debido a pequeñas irregularidades en el terreno o colisiones cercanas.
     {
         enSuelo = Physics.Raycast(
             posicion,
@@ -118,11 +102,7 @@ public class Bolita : MonoBehaviour
         );
     }
 
-    // =========================
-    // Integración numérica
-    // =========================
-
-    public void Integrar(float dt)
+    public void Integrar(float dt) // Método de integración que se llama cada paso de simulación para actualizar la velocidad y posición de la bolita basándose en las fuerzas acumuladas, el drag, la gravedad y las colisiones detectadas. Se calcula la aceleración a partir de las fuerzas acumuladas y el drag, se aplica la gravedad si no está en el suelo, se actualiza la velocidad con la aceleración, se aplica fricción de rodadura si está en el suelo, se limita la velocidad máxima y se resetea la fuerza acumulada para el siguiente paso de simulación.
     {
         DetectarSuelo();
 
@@ -161,16 +141,8 @@ public class Bolita : MonoBehaviour
         fuerzaAcumulada = Vector3.zero;
     }
 
-    // =========================
-    // Movimiento
-    // =========================
-
-    public void Mover(float dt)
+    public void Mover(float dt) // Método de movimiento que se llama cada paso de simulación para actualizar la posición de la bolita basándose en la velocidad actual y manejar las colisiones contra paredes u otros obstáculos utilizando SphereCast para detectar colisiones horizontales y verticales, ajustando la posición y reflejando la velocidad según sea necesario para simular rebotes y deslizamientos.
     {
-        // ===================================
-        // MOVIMIENTO HORIZONTAL
-        // ===================================
-
         Vector3 movimientoHorizontal =
             new Vector3(
                 velocidad.x,
@@ -225,9 +197,6 @@ public class Bolita : MonoBehaviour
             }
         }
 
-        // ===================================
-        // MOVIMIENTO VERTICAL
-        // ===================================
 
         float movimientoY =
             velocidad.y * dt;
@@ -273,11 +242,7 @@ public class Bolita : MonoBehaviour
         }
     }
 
-    // =========================
-    // Respuesta de colisión
-    // =========================
-
-    private void ReflejarVelocidad(
+    private void ReflejarVelocidad( // Método para reflejar la velocidad de la bolita al colisionar con una superficie, aplicando restitución y fricción según el ángulo de la colisión. Si la velocidad está dirigida hacia la superficie (dot product negativo), se calcula la componente normal y tangencial de la velocidad, se aplica fricción a la componente tangencial y restitución a la componente normal, y se actualiza la velocidad resultante.
         Vector3 normal)
     {
         if (
@@ -307,27 +272,19 @@ public class Bolita : MonoBehaviour
             restitucion;
     }
 
-    // =========================
-    // Fuerzas
-    // =========================
-
-    public void AgregarFuerza(
+    public void AgregarFuerza( // Método para agregar una fuerza a la bolita, acumulándola en el vector de fuerzaAcumulada para que sea aplicada en el siguiente paso de simulación durante la integración.
         Vector3 fuerza)
     {
         fuerzaAcumulada += fuerza;
     }
 
-    public void AgregarImpulso(
+    public void AgregarImpulso( // Método para agregar un impulso a la bolita, modificando directamente su velocidad basándose en la magnitud del impulso y la masa de la bolita, lo que permite aplicar cambios instantáneos en la velocidad (como un golpe o un salto) sin necesidad de acumular fuerzas a lo largo del tiempo.
         Vector3 impulso)
     {
         velocidad += impulso / masa;
     }
 
-    // =========================
-    // Fricción por zonas
-    // =========================
-
-    public void SetFriccionZona(
+    public void SetFriccionZona( // Método para establecer el coeficiente de fricción actual de la bolita al entrar en contacto con una zona de superficie específica, permitiendo que diferentes zonas apliquen diferentes niveles de fricción a la bolita mientras esté en contacto con ellas. El coeficiente se clampa entre 0 y 1 para asegurar valores válidos.
         float coeficiente)
     {
         friccionActual =
@@ -336,15 +293,11 @@ public class Bolita : MonoBehaviour
             );
     }
 
-    public void RestaurarFriccion()
+    public void RestaurarFriccion() // Método para restaurar el coeficiente de fricción actual de la bolita al valor base definido en el inspector, lo que se puede llamar cuando la bolita sale de una zona de superficie específica para volver a aplicar la fricción normal.
     {
         friccionActual =
             friccionBase;
     }
-
-    // =========================
-    // Visuales
-    // =========================
 
     public void ActualizarVisuales()
     {
@@ -352,11 +305,7 @@ public class Bolita : MonoBehaviour
             posicion;
     }
 
-    // =========================
-    // Reset
-    // =========================
-
-    public void Resetear()
+    public void Resetear() // Método para resetear la bolita a sus condiciones iniciales, estableciendo la posición a la posición inicial guardada, la velocidad a la velocidad inicial definida en el inspector, reseteando la fuerza acumulada a cero, restaurando la fricción al valor base y actualizando la posición del transform para reflejar el reset.
     {
         posicion =
             posicionInicial;
@@ -374,11 +323,7 @@ public class Bolita : MonoBehaviour
             posicion;
     }
 
-    // =========================
-    // Masa
-    // =========================
-
-    private void CalcularMasa()
+    private void CalcularMasa() // Método para calcular la masa de la bolita basándose en su volumen (calculado a partir del radio) y el factor de masa definido en el inspector, asegurando que la masa mínima sea un valor pequeño para evitar divisiones por cero o masas extremadamente pequeñas que puedan causar problemas en la simulación.
     {
         float volumen =
             (4f / 3f) *
@@ -392,11 +337,7 @@ public class Bolita : MonoBehaviour
             );
     }
 
-    // =========================
-    // Radio
-    // =========================
-
-    private void CalcularRadio()
+    private void CalcularRadio()  // Método para calcular el radio de la bolita basándose en el radio del SphereCollider y la escala del transform, asegurando que el radio se ajuste correctamente si el objeto ha sido escalado en alguna dirección.
     {
         SphereCollider sc =
             GetComponent<SphereCollider>();
@@ -410,7 +351,7 @@ public class Bolita : MonoBehaviour
             );
     }
 
-    private void OnValidate()
+    private void OnValidate() // Método que se llama automáticamente en el editor de Unity cada vez que se modifica un valor en el inspector, lo que permite recalcular el radio y la masa de la bolita automáticamente para reflejar los cambios realizados en los parámetros físicos o en la escala del objeto.
     {
         CalcularRadio();
         CalcularMasa();

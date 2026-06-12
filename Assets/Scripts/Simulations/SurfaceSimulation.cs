@@ -21,29 +21,29 @@ public class SurfaceSimulation : MonoBehaviour, IForceGenerator
     public float friccionB = 0.30f;
     public float friccionC = 0.80f;
 
-    private void OnEnable()
+    private void OnEnable() // Suscripción al simulador
     {
-        SimulationManager.Registrar(this);
+        SimulationManager.Registrar(this); // Registrar este generador de fuerzas en el SimulationManager
     }
 
-    private void OnDisable()
+    private void OnDisable() // Desuscripción del simulador
     {
-        SimulationManager.Desregistrar(this);
+        SimulationManager.Desregistrar(this); // Desregistrar este generador de fuerzas del SimulationManager
     }
 
-    public void ApplyForces(float dt)
+    public void ApplyForces(float dt) // Método de la interfaz IForceGenerator que se llama cada paso de simulación
     {
-        foreach (Bolita bolita in SimulationManager.Todas)
+        foreach (Bolita bolita in SimulationManager.Todas) // Iterar sobre todas las bolitas registradas en el SimulationManager
         {
             float distancia =
                 Vector3.Distance(
                     transform.position,
                     bolita.Posicion
-                );
+                ); // Calcular la distancia entre la posición de esta superficie y la posición de la bolita
 
-            if (distancia <= radioAccion)
+            if (distancia <= radioAccion) // Si la bolita está dentro del radio de acción de esta superficie
             {
-                switch (tipoSuperficie)
+                switch (tipoSuperficie) // Aplicar el coeficiente de fricción correspondiente según el tipo de superficie
                 {
                     case TipoSuperficie.SuperficieA:
 

@@ -24,7 +24,7 @@ public class SimulationUIManager : MonoBehaviour
     public Slider sliderSuperficieB;
     public Slider sliderSuperficieC;
 
-    private void Start()
+    private void Start() // Suscribir eventos de UI
     {
         // Magnetismo
         sliderMagnetismoFuerza.onValueChanged.AddListener(CambiarMagnetismoFuerza);
@@ -52,19 +52,19 @@ public class SimulationUIManager : MonoBehaviour
     // MAGNETISMO
     // =====================
 
-    private void CambiarMagnetismoFuerza(float valor)
+    private void CambiarMagnetismoFuerza(float valor) // Cambiar la fuerza de magnetismo (constante K)
     {
-        foreach (MagneticSimulation sim in FindObjectsOfType<MagneticSimulation>())
+        foreach (MagneticSimulation sim in FindObjectsOfType<MagneticSimulation>()) // Actualizar todas las simulaciones de magnetismo
         {
-            sim.constanteK = valor;
+            sim.constanteK = valor; // Cambiar la constante K en cada simulación
         }
     }
 
-    private void CambiarMagnetismoRadio(float valor)
+    private void CambiarMagnetismoRadio(float valor) // Cambiar el radio de acción del magnetismo
     {
-        foreach (MagneticSimulation sim in FindObjectsOfType<MagneticSimulation>())
+        foreach (MagneticSimulation sim in FindObjectsOfType<MagneticSimulation>()) //  Actualizar todas las simulaciones de magnetismo
         {
-            sim.radioAccion = valor;
+            sim.radioAccion = valor; // Cambiar el radio de acción en cada simulación
         }
     }
 
@@ -72,19 +72,19 @@ public class SimulationUIManager : MonoBehaviour
     // VIENTO
     // =====================
 
-    private void CambiarVientoIntensidad(float valor)
+    private void CambiarVientoIntensidad(float valor) // Cambiar la intensidad base del viento
     {
-        foreach (WindSimulation sim in FindObjectsOfType<WindSimulation>())
+        foreach (WindSimulation sim in FindObjectsOfType<WindSimulation>()) // Actualizar todas las simulaciones de viento
         {
-            sim.intensidadBase = valor;
+            sim.intensidadBase = valor; // Cambiar la intensidad base en cada simulación
         }
     }
 
-    private void CambiarVientoOscilante(bool valor)
+    private void CambiarVientoOscilante(bool valor) // Cambiar si el viento es oscilante o constante
     {
-        foreach (WindSimulation sim in FindObjectsOfType<WindSimulation>())
+        foreach (WindSimulation sim in FindObjectsOfType<WindSimulation>()) // Actualizar todas las simulaciones de viento
         {
-            sim.esOscilante = valor;
+            sim.esOscilante = valor; // Cambiar el tipo de viento en cada simulación
         }
     }
 
@@ -92,19 +92,19 @@ public class SimulationUIManager : MonoBehaviour
     // SALTO
     // =====================
 
-    private void CambiarSaltoImpulso(float valor)
+    private void CambiarSaltoImpulso(float valor) // Cambiar la fuerza de impulso del salto
     {
-        foreach (JumpSimulation sim in FindObjectsOfType<JumpSimulation>())
+        foreach (JumpSimulation sim in FindObjectsOfType<JumpSimulation>()) // Actualizar todas las simulaciones de salto
         {
-            sim.impulsoVertical = valor;
+            sim.impulsoVertical = valor; // Cambiar la fuerza de impulso en cada simulación
         }
     }
 
-    private void CambiarSaltoRecarga(float valor)
+    private void CambiarSaltoRecarga(float valor) // Cambiar el tiempo de recarga del salto
     {
-        foreach (JumpSimulation sim in FindObjectsOfType<JumpSimulation>())
+        foreach (JumpSimulation sim in FindObjectsOfType<JumpSimulation>()) // Actualizar todas las simulaciones de salto
         {
-            sim.tiempoRecarga = valor;
+            sim.tiempoRecarga = valor; // Cambiar el tiempo de recarga en cada simulación
         }
     }
 
@@ -112,19 +112,19 @@ public class SimulationUIManager : MonoBehaviour
     // BOOST
     // =====================
 
-    private void CambiarBoostFuerza(float valor)
+    private void CambiarBoostFuerza(float valor) // Cambiar la fuerza de impulso del boost
     {
-        foreach (BoostSimulation sim in FindObjectsOfType<BoostSimulation>())
+        foreach (BoostSimulation sim in FindObjectsOfType<BoostSimulation>()) // Actualizar todas las simulaciones de boost
         {
-            sim.fuerzaImpulso = valor;
+            sim.fuerzaImpulso = valor; // Cambiar la fuerza de impulso en cada simulación
         }
     }
 
-    private void CambiarBoostRecarga(float valor)
+    private void CambiarBoostRecarga(float valor) // Cambiar el tiempo de recarga del boost
     {
-        foreach (BoostSimulation sim in FindObjectsOfType<BoostSimulation>())
+        foreach (BoostSimulation sim in FindObjectsOfType<BoostSimulation>()) // Actualizar todas las simulaciones de boost
         {
-            sim.tiempoRecarga = valor;
+            sim.tiempoRecarga = valor; // Cambiar el tiempo de recarga en cada simulación
         }
     }
 
@@ -132,27 +132,27 @@ public class SimulationUIManager : MonoBehaviour
     // SUPERFICIES
     // =====================
 
-    private void CambiarSuperficieA(float valor)
+    private void CambiarSuperficieA(float valor) // Cambiar la fricción de la superficie A
     {
-        foreach (SurfaceSimulation sim in FindObjectsOfType<SurfaceSimulation>())
+        foreach (SurfaceSimulation sim in FindObjectsOfType<SurfaceSimulation>()) // Actualizar todas las simulaciones de superficies
         {
-            sim.friccionA = valor;
+            sim.friccionA = valor; // Cambiar la fricción de la superficie A en cada simulación
         }
     }
 
-    private void CambiarSuperficieB(float valor)
+    private void CambiarSuperficieB(float valor) // Cambiar la fricción de la superficie B
     {
-        foreach (SurfaceSimulation sim in FindObjectsOfType<SurfaceSimulation>())
+        foreach (SurfaceSimulation sim in FindObjectsOfType<SurfaceSimulation>()) // Actualizar todas las simulaciones de superficies
         {
-            sim.friccionB = valor;
+            sim.friccionB = valor; // Cambiar la fricción de la superficie B en cada simulación
         }
     }
 
-    private void CambiarSuperficieC(float valor)
+    private void CambiarSuperficieC(float valor) // Cambiar la fricción de la superficie C
     {
-        foreach (SurfaceSimulation sim in FindObjectsOfType<SurfaceSimulation>())
+        foreach (SurfaceSimulation sim in FindObjectsOfType<SurfaceSimulation>()) // Actualizar todas las simulaciones de superficies
         {
-            sim.friccionC = valor;
+            sim.friccionC = valor; // Cambiar la fricción de la superficie C en cada simulación
         }
     }
 }

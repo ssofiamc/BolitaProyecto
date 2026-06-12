@@ -11,35 +11,32 @@ public class JumpSimulation : MonoBehaviour
 
     private float ultimoSalto = -999f;
 
-    private void Update()
+    private void Update() // Se ejecuta cada frame
     {
-        foreach (Bolita bolita in SimulationManager.Todas)
+        foreach (Bolita bolita in SimulationManager.Todas) // Itera sobre todas las bolitas registradas en el SimulationManager
         {
             float distancia =
                 Vector3.Distance(
                     bolita.Posicion,
                     transform.position
-                );
+                ); // Calcula la distancia entre la bolita y el trampolín
 
-            // Radio del trampolín
             if (distancia > 1.5f)
-                continue;
+                continue; // Si la bolita está demasiado lejos, no se aplica el impulso
 
             if (
                 Time.time <
                 ultimoSalto + tiempoRecarga
-            )
+            ) // Si no ha pasado suficiente tiempo desde el último salto, se evita aplicar otro impulso
                 continue;
 
-            ultimoSalto = Time.time;
+            ultimoSalto = Time.time; // Actualiza el tiempo del último salto para controlar la recarga
 
             Vector3 impulso =
                 Vector3.up *
-                impulsoVertical;
+                impulsoVertical; // Crea un vector de impulso hacia arriba con la magnitud definida por impulsoVertical
 
-            bolita.AgregarImpulso(
-                impulso
-            );
+            bolita.AgregarImpulso(impulso); // Aplica el impulso a la bolita, lo que hará que salte hacia arriba
         }
     }
 
